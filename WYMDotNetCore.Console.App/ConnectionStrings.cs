@@ -14,7 +14,8 @@ namespace WYMDotNetCore.ConsoleApp
             DataSource = ".",
             InitialCatalog = "WYMDotNetCore",
             UserID = "sa",
-            Password = "sa@123"
+            Password = "sa@123",
+            TrustServerCertificate = true,
         };
     }
 }

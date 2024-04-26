@@ -101,7 +101,7 @@ namespace WYMDotNetCore.ConsoleApp
             string message = result > 0 ? "Updating Successful." : "Updating Failed.";
             Console.WriteLine(message);
         }  
-        public void Delete(int id)
+        private void Delete(int id)
         {
             var item = new BlogDto
             {

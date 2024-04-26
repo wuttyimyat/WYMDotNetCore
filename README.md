@@ -1,3 +1,6 @@
+Code First
+Database First
+
 UI + Business Logic + Data Access + Db
 
 Mobile, Web => API => Database
