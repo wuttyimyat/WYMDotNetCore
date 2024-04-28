@@ -1,7 +1,7 @@
 ﻿
 using System.Data;
 using System.Data.SqlClient;
-using WYMDotNetCore.ConsoleApp;
+using WYMDotNetCore.ConsoleApp.EFCoreExamples;
 
 Console.WriteLine("Hello, World!");
 

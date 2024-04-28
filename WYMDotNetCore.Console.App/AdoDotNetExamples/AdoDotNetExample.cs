@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Diagnostics.Metrics;
 using System.Reflection.Metadata;
 
-namespace WYMDotNetCore.ConsoleApp
+namespace WYMDotNetCore.ConsoleApp.AdoDotNetExamples
 {
     internal class AdoDotNetExample
     {
@@ -62,21 +62,21 @@ namespace WYMDotNetCore.ConsoleApp
             sqlDataAdapter.Fill(dt);
 
             connection.Close();
-            
-            if(dt.Rows.Count == 0)
+
+            if (dt.Rows.Count == 0)
             {
                 Console.WriteLine("No data found.");
                 return;
             }
             DataRow dr = dt.Rows[0];
-          
-             Console.WriteLine("Blog Id ==> " + dr["BlogId"]);
-             Console.WriteLine("Blog Title ==> " + dr["BlogTitle"]);
-             Console.WriteLine("Blog Author ==> " + dr["BlogAuthor"]);
-             Console.WriteLine("Blog Content ==> " + dr["BlogContent"]);
-             Console.WriteLine("---------------------------------------------");
+
+            Console.WriteLine("Blog Id ==> " + dr["BlogId"]);
+            Console.WriteLine("Blog Title ==> " + dr["BlogTitle"]);
+            Console.WriteLine("Blog Author ==> " + dr["BlogAuthor"]);
+            Console.WriteLine("Blog Content ==> " + dr["BlogContent"]);
+            Console.WriteLine("---------------------------------------------");
         }
-        public void Create (string title, string author, string content)
+        public void Create(string title, string author, string content)
         {
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
@@ -137,7 +137,7 @@ namespace WYMDotNetCore.ConsoleApp
             string query = @"delete from Tbl_Blog where BlogId = @BlogId";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@BlogId", id);
-       
+
             int result = cmd.ExecuteNonQuery();
 
             connection.Close();

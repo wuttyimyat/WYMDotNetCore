@@ -8,8 +8,10 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using WYMDotNetCore.ConsoleApp.Dtos;
+using WYMDotNetCore.ConsoleApp.Services;
 
-namespace WYMDotNetCore.ConsoleApp
+namespace WYMDotNetCore.ConsoleApp.DapperExamples
 {
     internal class DapperExample
     {
@@ -25,9 +27,9 @@ namespace WYMDotNetCore.ConsoleApp
         }
         private void Read()
         {
-           using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-           List<BlogDto> lst =  db.Query<BlogDto>("select * from Tbl_Blog").ToList();
-            
+            using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
+            List<BlogDto> lst = db.Query<BlogDto>("select * from Tbl_Blog").ToList();
+
             foreach (BlogDto item in lst)
             {
                 Console.WriteLine(item.BlogId);
@@ -79,11 +81,11 @@ namespace WYMDotNetCore.ConsoleApp
             string message = result > 0 ? "Saving Successful." : "Saving Failed.";
             Console.WriteLine(message);
         }
-            private void Update(int id, string title, string author, string content)
+        private void Update(int id, string title, string author, string content)
         {
             var item = new BlogDto
             {
-                BlogId= id,
+                BlogId = id,
                 BlogTitle = title,
                 BlogAuthor = author,
                 BlogContent = content,
@@ -100,13 +102,13 @@ namespace WYMDotNetCore.ConsoleApp
             int result = db.Execute(query, item);
             string message = result > 0 ? "Updating Successful." : "Updating Failed.";
             Console.WriteLine(message);
-        }  
+        }
         private void Delete(int id)
         {
             var item = new BlogDto
             {
                 BlogId = id,
-               
+
             };
 
 
